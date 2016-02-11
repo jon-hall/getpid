@@ -16,7 +16,7 @@ getpid('node', function(err, pid) {
     }
 
     if(Array.isArray(pid)) {
-        // Windows only, if the query matches multiple running process names
+        // (Windows only) If the query matches multiple running process names
         // then you'll get an array of matched PIDs back
         pid.forEach(say_hello);
     } else {
