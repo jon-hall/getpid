@@ -23,7 +23,6 @@
   },
   "homepage": "https://github.com/jon-hall/getpid#readme",
   "dependencies": {
-    "loadash": "^1.0.0",
     "lodash": "^4.17.21",
     "ms-wmic": "^1.0.3",
     "pidof": "^1.0.2"
