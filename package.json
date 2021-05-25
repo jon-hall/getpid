@@ -23,8 +23,9 @@
   },
   "homepage": "https://github.com/jon-hall/getpid#readme",
   "dependencies": {
+    "csv": "^5.5.0",
     "lodash": "^4.17.21",
-    "ms-wmic": "^1.0.3",
+    "ms-wmic": "https://github.com/0J3-2/node-ms-wmic.git",
     "pidof": "^1.0.2"
   }
 }
