@@ -1,6 +1,6 @@
 {
   "name": "getpid",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Get the pid of running processes on any platform",
   "main": "index.js",
   "scripts": {
