@@ -1,6 +1,6 @@
 ## getpid
 
-Cross-platform PID retrieval (by process name), using [pidof](https://github.com/calmh/node-pidof) on OSX/Unix and [ms-wmic](https://github.com/mjhasbach/node-ms-wmic) on Windows.
+Cross-platform PID retrieval (by process name), using `ps` on OSX/Unix and [ms-wmic](https://github.com/mjhasbach/node-ms-wmic) on Windows.
 
 ```sh
 npm i getpid --save
@@ -8,24 +8,23 @@ npm i getpid --save
 
 ### Usage
 ```js
-var getpid = require('getpid');
+const getpid = require('getpid');
 
-getpid('node', function(err, pid) {
-    if(err) {
-        return handle_error(err);
-    }
+async function main() {
+  try {
+    // get all pids for "node" processes
+    const pids = await getpid('node');
+  } catch (err) {
+    handle_error(err);
+    return;
+  }
 
-    if(Array.isArray(pid)) {
-        // Windows only, if the query matches multiple running process names
-        // then you'll get an array of matched PIDs back
-        pid.forEach(say_hello);
-    } else {
-        // Even if no errors occurred, pid may still be null/undefined if it wasn't found
-        if(pid) {
-            say_hello(pid);
-        } else {
-            handle_error('PID not found');
-        }
-    }
-});
+  if (!pids.length) {
+    return process_not_found();
+  }
+
+  for (const pid of pids) {
+    await do_something_with_pid(pid);
+  }
+}
 ```
